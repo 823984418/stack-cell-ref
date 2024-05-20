@@ -1,0 +1,10 @@
+[package]
+name = "stack-cell-ref"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+description = "Share a reference in thread inner."
+keywords = ["cell", "pointer", "reference"]
+categories = ["no-std", "algorithms"]
+repository = "https://github.com/823984418/stack-cell-ref"
