@@ -4,15 +4,13 @@ Share a reference in thread inner.
 # Examples
 ```
 use std::cell::Cell;
-
-use stack_cell_ref::CellRef;
-
+use stack_cell_ref::CellOptionRef;
 struct Foo {
     x: Cell<i32>,
 }
 
 thread_local! {
-    static S: CellRef<Foo> = CellRef::new();
+    static S: CellOptionRef<Foo> = CellOptionRef::new();
 }
 
 fn set_foo(x: i32) {
@@ -26,7 +24,7 @@ fn set_foo(x: i32) {
 let foo = Foo { x: Cell::new(0) };
 
 S.with(|c| {
-    c.with(&foo, || {
+    c.with(Some(&foo), || {
         set_foo(1);
     });
     assert_eq!(c.get_ptr(), None);
